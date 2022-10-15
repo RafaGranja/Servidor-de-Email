@@ -56,8 +56,8 @@ class CaixaDeEntrada{
 
             }
             else{//SE NAO FOR
-                while (it->data->pri>=newNode->data->pri)
-                {   
+                while (it->data->pri>=newNode->data->pri)//ENQUANTO O EMAIL TEM A PRIORIDADE MAIOR 
+                {                                        //OU IGUAL PASSA PARA O PRÓXIMO              
                     if(it->next!=NULL){
                         it_anterior=it;
                         it=it->next;
@@ -100,7 +100,7 @@ class CaixaDeEntrada{
         if(this->listaEmail==NULL){
             cout << "CAIXA DE ENTRADA VAZIA" << endl;
         }
-        else{
+        else{//SE NÃO RETIRA O PRIMEIRO
             cout << this->listaEmail->data->msg << endl;
             aux=this->listaEmail;
             this->listaEmail=this->listaEmail->next;
