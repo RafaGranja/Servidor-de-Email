@@ -21,3 +21,4 @@ clean:
 all:
 	$(CC) $(CFLAGS) -c $(SRC)/main.cpp -o $(OBJ)/main.o
 	$(CC) $(CFLAGS) -o $(BIN)/main.exe $(OBJ)/main.o
+	$(BIN)/main.exe

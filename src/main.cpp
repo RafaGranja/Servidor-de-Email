@@ -11,6 +11,7 @@ int main(){
     unsigned int id;
     unsigned int pri;
     string msg;
+    string aux;
 
     string c;
 
@@ -29,7 +30,14 @@ int main(){
         else if(c=="ENTREGA"){
             cin >> id;
             cin >> pri;
-            cin >> msg;
+            // cin >> aux;
+            // while (aux !="FIM")
+            // {
+            //     msg+=aux+" ";
+            //     cin >> aux;
+            // }
+            getline(std::cin,msg);
+            msg = msg.substr(0,(msg.length() - 3));
             usuarios->push_email(msg,pri,id);
         }
         else if(c=="CONSULTA"){

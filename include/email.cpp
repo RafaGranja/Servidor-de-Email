@@ -91,14 +91,14 @@ class CaixaDeEntrada{
         }
     }
 
-    void pop(){
+    void pop(unsigned int _id){
 
         //DECLARA AUXILIAR
         ListaEmail *aux = new ListaEmail();
 
         //SE CAIXA DE EMAIL ESTA VAZIA
         if(this->listaEmail==NULL){
-            cout << "CAIXA DE ENTRADA VAZIA" << endl;
+            cout << "CONSULTA "<<_id<<": CAIXA DE ENTRADA VAZIA" << endl;
         }
         else{//SE NÃO RETIRA O PRIMEIRO
             cout << this->listaEmail->data->msg << endl;
@@ -268,7 +268,7 @@ class ListaUsuarios{
             it=this->user;
             do{
                 if(it->id==_id){
-                    it->inbox->pop();
+                    it->inbox->pop(_id);
                     return;
                 }
                 else{
@@ -283,38 +283,6 @@ class ListaUsuarios{
 
         }
 
-
-    }
-
-    //LE O PRIMEIRO EMAIL DO USUARIO CASO ELE EXISTA E POSSUA EMAIL
-    void busca(unsigned int _id){
-
-        //DECLARA ITERADOR
-        Usuario *it = new Usuario();
-
-        if(this->user==NULL){
-
-            cout << "ERRO: CONTA "<<_id<<" NAO EXISTE" << endl;
-            return;
-
-        }
-        else{// SE NAO
-
-            it=this->user;
-            while (it->id!=_id)//PERCORRE A LISTA ATE ENCONTRAR O ID
-            {   
-                if(it->prox==NULL){
-                    cout << "ERRO: CONTA "<<_id<<" NAO EXISTE" << endl;
-                    return;
-                }
-                else{
-                    it=it->prox;
-                }
-            }
-            //IMPRIME EMAIL QUANDO ENCONTRA
-            it->inbox->pop(); 
-
-        }
 
     }
 
