@@ -4,11 +4,11 @@ using namespace std;
 class Email{
 
     public :
-    unsigned int pri;
+    int pri;
     string msg;
 
     //CONSTRUTOR PASSANDO PRIORIDADE E MENSAGEM
-    Email(unsigned int _pri,string _msg){
+    Email(int _pri,string _msg){
         this->pri=_pri;
         this->msg=_msg;
     }
@@ -28,7 +28,7 @@ class CaixaDeEntrada{
     public :
     ListaEmail *listaEmail=NULL;
 
-    void push(Email *new_email,unsigned int _id){
+    void push(Email *new_email,int _id){
 
         //CRIA E ALOCA UM NOVO EMAIL
         ListaEmail* newNode = new ListaEmail();
@@ -39,7 +39,7 @@ class CaixaDeEntrada{
         //SE A LISTA ESTA VAZIA CRIA UM HEAD
         if(this->listaEmail == NULL){
             this->listaEmail = newNode;
-            cout << "OK: MENSAGEM PARA "<<_id<<" ENTREGUE"<<endl;
+            cout  << "OK: MENSAGEM PARA "<<_id<<" ENTREGUE" << endl;
         }
         else{//SE NAO ESTA VAZIA
             //PROCURA UM LUGAR ONDE FICAR
@@ -52,7 +52,7 @@ class CaixaDeEntrada{
 
                 newNode->next=it;
                 this->listaEmail = newNode;
-                cout << "OK: MENSAGEM PARA "<<_id<<" ENTREGUE"<<endl;
+                cout  << "OK: MENSAGEM PARA "<<_id<<" ENTREGUE" << endl;
 
             }
             else{//SE NAO FOR
@@ -63,12 +63,14 @@ class CaixaDeEntrada{
                         it=it->next;
                     }
                     else{
+                        it_anterior=it;
+                        it=it->next;
                         break;
                     }
                 }
                 newNode->next=it;
                 it_anterior->next = newNode;
-                cout << "OK: MENSAGEM PARA "<<_id<<" ENTREGUE"<<endl;
+                cout  << "OK: MENSAGEM PARA "<<_id<<" ENTREGUE" << endl;
                 
             }
             
@@ -85,23 +87,23 @@ class CaixaDeEntrada{
         while(this->listaEmail!=NULL){
             aux=this->listaEmail;
             this->listaEmail=this->listaEmail->next;
-            cout<<aux->data->msg<<endl;
+            cout << aux->data->msg << endl;
             delete aux->data;
             delete aux;
         }
     }
 
-    void pop(unsigned int _id){
+    void pop(int _id){
 
         //DECLARA AUXILIAR
         ListaEmail *aux = new ListaEmail();
 
         //SE CAIXA DE EMAIL ESTA VAZIA
         if(this->listaEmail==NULL){
-            cout << "CONSULTA "<<_id<<": CAIXA DE ENTRADA VAZIA" << endl;
+            cout  << "CONSULTA "<<_id<<": CAIXA DE ENTRADA VAZIA" << endl;
         }
         else{//SE NÃO RETIRA O PRIMEIRO
-            cout << this->listaEmail->data->msg << endl;
+            cout << this->listaEmail->data->msg << endl ;
             aux=this->listaEmail;
             this->listaEmail=this->listaEmail->next;
             delete aux->data;
@@ -116,7 +118,7 @@ class Usuario
 {
     public:
 
-    unsigned int id;
+    int id;
     CaixaDeEntrada *inbox = NULL;
     Usuario *prox = NULL;
 
@@ -135,7 +137,7 @@ class ListaUsuarios{
     Usuario *user = NULL;
 
     //INSERE USUARIO CASO O ID NAO EXISTA
-    void push(unsigned int _id){
+    void push(int _id){
         
         //DECLARA OS ITERADORES
         Usuario *it = new Usuario();
@@ -146,7 +148,7 @@ class ListaUsuarios{
 
             this->user = new Usuario();
             this->user->id=_id;
-            cout << "OK: CONTA "<<_id<<" CADASTRADA" << endl;
+            cout << "OK: CONTA "<<_id<<" CADASTRADA" << endl ;
 
         }
         else{//POSSUI USUARIO
@@ -173,7 +175,7 @@ class ListaUsuarios{
 
     }
 
-    void push_email(string _new_email,unsigned int _pri,unsigned int _id){
+    void push_email(string _new_email,int _pri,int _id){
 
         //DECLARA OS ITERADORES
         Usuario *it = new Usuario();
@@ -206,7 +208,7 @@ class ListaUsuarios{
     }
     
     //DELETE USUARIO CASO O ID EXISTA
-    void pop(unsigned int _id){
+    void pop(int _id){
 
         //DECLARA ITERADOR
         Usuario *it = new Usuario();
@@ -248,7 +250,7 @@ class ListaUsuarios{
                 aux->inbox->deletaCaixa();//DESALOCA LISTA DE EMAIL
                 delete aux->inbox;//DESALOCA CAIXA DE EMAIL
                 delete aux;//DESALOCA USUARIO
-                cout << "OK: CONTA "<<_id<<" REMOVIDA" << endl;
+                cout <<"OK: CONTA "<<_id<<" REMOVIDA" << endl;
                 
 
             }
@@ -256,7 +258,7 @@ class ListaUsuarios{
         }
     }
 
-    void pop_email(unsigned int _id){
+    void pop_email(int _id){
         //DECLARA OS ITERADORES
         Usuario *it = new Usuario();
 
