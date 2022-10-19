@@ -91,7 +91,6 @@ class CaixaDeEntrada{
         while(this->listaEmail!=NULL){
             aux=this->listaEmail;
             this->listaEmail=this->listaEmail->next;
-            cout << aux->data->msg << endl;
             delete aux->data;
             delete aux;
         }
@@ -215,6 +214,7 @@ class ListaUsuarios{
     void pop(int _id){
 
         //DECLARA ITERADOR
+        Usuario *it_anterior = new Usuario();
         Usuario *it = new Usuario();
         //DECLARA AUXILIAR
         Usuario *aux = new Usuario();
@@ -238,19 +238,19 @@ class ListaUsuarios{
             }
             else{
 
-                it=this->user;
-                while (it->prox->id!=_id)//PERCORRE A LISTA ATE ENCONTRAR O ID NO PROXIMO 
+                while (it->id!=_id)//PERCORRE A LISTA ATE ENCONTRAR O ID NO PROXIMO 
                 {   
                     if(it->prox==NULL){
                         cout << "ERRO: CONTA "<<_id<<" NAO EXISTE" << endl;
                         return;
                     }
                     else{
+                        it_anterior=it;
                         it=it->prox;
                     }
                 }
-                aux=it->prox;
-                it->prox=it->prox->prox;
+                aux=it;
+                it_anterior->prox=it->prox;
                 aux->inbox->deletaCaixa();//DESALOCA LISTA DE EMAIL
                 delete aux->inbox;//DESALOCA CAIXA DE EMAIL
                 delete aux;//DESALOCA USUARIO

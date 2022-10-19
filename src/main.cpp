@@ -2,10 +2,14 @@
 #include <algorithm>
 #include <string>
 #include "../include/email.hpp"
+#include <time.h>
 
 using namespace std;
 
 int main(){
+
+    //clock_t inicio,fim;
+    //inicio = clock();
 
     ListaUsuarios *usuarios = new ListaUsuarios();
     unsigned int id;
@@ -13,6 +17,7 @@ int main(){
     string msg;
     char arquivo[100];
     char Linha[100];
+    
 
     FILE *arq;
 
@@ -26,6 +31,7 @@ int main(){
     if (arq == NULL)  // Se houve erro na abertura
     {
         cout << "Problemas na abertura do arquivo" << endl;
+        //cout << "TEMPO DE EXECUÇÃO: " <<  ((double)(fim - inicio) / CLOCKS_PER_SEC) << endl;
         return 0;
     }
 
@@ -60,6 +66,9 @@ int main(){
 
     usuarios->limpa_usuarios();
     delete usuarios;
+
+    //fim = clock();
+    //cout << "TEMPO DE EXECUÇÃO: " <<  ((double)(fim - inicio) / CLOCKS_PER_SEC) << endl;
     return 0;
 }
 
