@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
-#include "../include/email.cpp"
+#include "../include/email.hpp"
 
 using namespace std;
 
