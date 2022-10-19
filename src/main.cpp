@@ -54,7 +54,7 @@ int main(){
             fscanf(arq, "%d", &id);//LE O ID DO USUARIO
             fscanf(arq, "%d", &pri);//LE A PRIORIDADE
             msg = fgets(Linha, 100, arq);
-            msg = msg.substr(1,(msg.length() - 6));//RETIRA O 'FIM'
+            msg = msg.substr(1,(msg.length() - 5));//RETIRA O 'FIM'
             usuarios->push_email(msg,pri,id);//CHAMA FUNCAO DE ENVIO DE EMAIL PASSANDO A MENSAGEM, PRIORIDADE DA MENSAGEM E ID DO USUARIO
         }
         else if(comando=="CONSULTA"){//SE OPERACAO DE LER EMAIL
